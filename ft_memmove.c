@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 06:05:23 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 06:05:37 by mtarza           ###   ########.fr       */
+/*   Created: 2024/11/04 05:31:55 by mtarza            #+#    #+#             */
+/*   Updated: 2024/11/04 05:35:12 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strrchr(const char *s, int c)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-    char *last = NULL;
-    char cc = (char)c;
-    unsigned int i = 0;
+	unsigned char		*dp;
+	const unsigned char	*sp = (const unsigned char *)src;
+	size_t				i;
 
-    while (s[i])
-    {
-        if (s[i] == cc)
-            last = (char *)&s[i];
-        i++;
-    }
-
-    if (cc == '\0')
-        return (char *)&s[i];
-
-    return last;
+	dp = (unsigned char *)dst;
+	i = 0;
+	if (sp < dp && dp < sp + len)
+	{
+		sp += len;
+		dp += len;
+		while (len--)
+			*--dp = *--sp;
+	}
+	else
+	{
+		while (i < len)
+		{
+			*dp++ = *sp++;
+			i++;
+		}
+	}
+	return (dst);
 }
-

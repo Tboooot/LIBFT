@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 06:05:48 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 06:06:32 by mtarza           ###   ########.fr       */
+/*   Created: 2024/11/04 06:06:40 by mtarza            #+#    #+#             */
+/*   Updated: 2024/11/04 23:25:49 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    size_t i = 0;
+	unsigned char	*ptr;
+	unsigned char	uc;
+	size_t			i;
 
-    while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
-    {
-        if (s1[i] != s2[i])
-            return (unsigned char)s1[i] - (unsigned char)s2[i];
-        i++;
-    }
-    return 0;
+	ptr = (unsigned char *)s;
+	uc = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == uc)
+			return ((void *)(ptr + i));
+		i++;
+	}
+	return (NULL);
 }
-

@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 06:06:40 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 06:07:36 by mtarza           ###   ########.fr       */
+/*   Created: 2024/11/04 05:24:51 by mtarza            #+#    #+#             */
+/*   Updated: 2024/11/04 05:26:56 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memchr(const void *s, int c, size_t n)
+int	ft_isalnum(int c)
 {
-    unsigned char *ptr = (unsigned char *)s;
-    unsigned char uc = (unsigned char)c;
-    size_t i = 0;
-
-    while (i < n)
-    {
-        if (ptr[i] == uc)
-            return (void *)(ptr + i);
-        i++;
-    }
-
-    return NULL;
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }
-
