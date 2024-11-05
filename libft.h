@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 06:41:12 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 23:44:19 by mtarza           ###   ########.fr       */
+/*   Updated: 2024/11/05 00:23:51 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
