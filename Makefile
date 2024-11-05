@@ -6,7 +6,7 @@
 #    By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 06:43:38 by mtarza            #+#    #+#              #
-#    Updated: 2024/11/05 01:44:46 by mtarza           ###   ########.fr        #
+#    Updated: 2024/11/05 04:39:46 by mtarza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,22 +26,24 @@ CC = cc
 RM = rm -f
 AR = ar rcs
 
-CFLAGS = -Wall -Wextra -Werror -I ${HEAD}
+CFLAGS =	-Wall -Wextra -Werror -I ${HEAD}
 
-all: $(NAME)
+all:	$(NAME)
 
-$(NAME): ${OBJS}
+$(NAME):	${OBJS}
 	${AR} ${NAME} ${OBJS}
+so:
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
-bonus: ${B_OBJS}
+bonus:	${B_OBJS}
 	${AR} ${NAME} ${B_OBJS}
 
 clean:
 	${RM} ${OBJS} ${B_OBJS}
 
-fclean: clean
+fclean:	clean
 	${RM} $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY:	all bonus clean fclean re
