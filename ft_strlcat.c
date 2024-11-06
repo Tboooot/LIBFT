@@ -5,48 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 05:42:08 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/05 05:19:35 by mtarza           ###   ########.fr       */
+/*   Created: 2024/11/05 15:48:47 by mtarza            #+#    #+#             */
+/*   Updated: 2024/11/06 22:11:59 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	getlength(const char *dst)
-{
-	if (dst == NULL)
-		return (0);
-	return (ft_strlen(dst));
-}
-
-static void	copy(char *dst, const char *src, size_t *i, size_t size)
-{
-	size_t	c;
-
-	c = 0;
-	while (src[c] && *i < size - 1)
-	{
-		dst[*i] = src[c];
-		(*i)++;
-		c++;
-	}
-	if (dst != NULL)
-		dst[*i] = '\0';
-}
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	start_l;
+	size_t	dsize;
 
-	if (src == NULL)
-		return (0);
-	if (dst == NULL && size == 0)
+	if (dest == NULL && size == 0)
 		return (ft_strlen(src));
-	i = getlength(dst);
-	start_l = i;
-	if (size <= i)
-		return (size + ft_strlen(src));
-	copy(dst, src, &i, size);
-	return (start_l + ft_strlen(src));
+	dsize = 0;
+	while (dest[dsize] != '\0' && dsize < size)
+		dsize++;
+	i = dsize;
+	while (src[dsize - i] && dsize + 1 < size)
+	{
+		dest[dsize] = src[dsize - i];
+		dsize++;
+	}
+	if (i < size)
+		dest[dsize] = '\0';
+	return (i + ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 06:05:23 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/05 05:14:11 by mtarza           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:00:41 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t		i;
 	const char	*pos;
 
 	pos = NULL;
-	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == c)
-			pos = s + i;
-		i++;
+		if (*s == (char)c)
+			pos = s;
+		s++;
 	}
-	if (s[i] == c)
-		pos = s + i;
+	if ((char)c == '\0')
+		pos = s;
 	return ((char *)pos);
 }

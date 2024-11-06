@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 05:31:55 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 05:35:12 by mtarza           ###   ########.fr       */
+/*   Updated: 2024/11/06 17:01:51 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*dp;
-	const unsigned char	*sp = (const unsigned char *)src;
+	unsigned char		*d;
+	const unsigned char	*s = (const unsigned char *)src;
 	size_t				i;
 
-	dp = (unsigned char *)dst;
+	d = (unsigned char *)dst;
 	i = 0;
-	if (sp < dp && dp < sp + len)
+	if (s < d)
 	{
-		sp += len;
-		dp += len;
+		s += len;
+		d += len;
 		while (len--)
-			*--dp = *--sp;
+			*--d = *--s;
 	}
 	else
 	{
 		while (i < len)
 		{
-			*dp++ = *sp++;
+			*d++ = *s++;
 			i++;
 		}
 	}
